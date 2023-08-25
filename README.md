@@ -1,8 +1,11 @@
 # React + Vite
+# Estrutura de pastas
+- public: conteúdo estático (não afetado pela programação).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Todo arquivo JSX são componentes.
 
-Currently, two official plugins are available:
+- StrictMode é um comando que obriga usar tudo que vc declarar de variavel ou objeto.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Nome dos componentes SEMPRE tem que iniciar com letra MAIÚSCULA!
+
+
