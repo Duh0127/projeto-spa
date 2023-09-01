@@ -5,9 +5,10 @@ import App from './App.jsx'
 import './index.css'
 
 import Home from "./components/Home.jsx";
-import Produtos from "./components/produtos/Produtos.jsx";
-import EditarProdutos from './components/produtos/EditarProduto.jsx'
+import Produtos from "./components/Produtos/Produtos.jsx";
+import EditarProdutos from './components/Produtos/EditarProduto.jsx'
 import Error from './components/Error.jsx'
+import ExcluirProdutos from './components/Produtos/ExcluirProdutos.jsx'
 
 const router = createBrowserRouter([
   {path:"/", element:<App/>, 
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     {path: "/", element: <Home/>},
     {path: "/produtos", element: <Produtos/>},
     {path: "/produtos/editar/:id", element: <EditarProdutos/>},
+    {path: "/produtos/excluir/:id", element: <ExcluirProdutos/>},
     {path: "*", element: <Error/>}
   ]}
 ])
@@ -22,6 +24,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>,
 )

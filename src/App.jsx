@@ -1,8 +1,5 @@
-import Cabecalho from "./components/Cabecalho";
-import Conteudo from "./components/Conteudo";
-import Footer from "./components/Footer";
-import reactLogo from "./assets/react.svg";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 export default function App() {
 
@@ -10,9 +7,8 @@ export default function App() {
 
   return (
     <>
-      <Cabecalho/>
-      <Conteudo logoDoApp={reactLogo} altLogo="Logo React"/>
-      <Footer />
+      <Navbar/>
+      <Outlet/>
     </>
   )
 }
