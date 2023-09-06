@@ -5,10 +5,10 @@ import App from './App.jsx'
 import './index.css'
 
 import Home from "./components/Home.jsx";
-import Produtos from "./components/Produtos/Produtos.jsx";
-import EditarProdutos from './components/Produtos/EditarProduto.jsx'
+import Produtos from "./components/produtos/Produtos.jsx";
+import EditarProdutos from './components/produtos/EditarProduto.jsx'
 import Error from './components/Error.jsx'
-import ExcluirProdutos from './components/Produtos/ExcluirProdutos.jsx'
+import ExcluirProdutos from './components/produtos/ExcluirProdutos.jsx'
 
 const router = createBrowserRouter([
   {path:"/", element:<App/>, 
