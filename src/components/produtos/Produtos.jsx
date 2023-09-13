@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { ListaProdutos } from "./ListaProdutos";
@@ -6,9 +6,20 @@ import classes from "./Produtos.module.css";
 
 export default function Produtos() {
 
+    useEffect(() => {
+        console.log("Use effect que será sempre renderizado")
+    })
+
+    const [exemplo, setExemplo] = useState(0);
+
     return (
         <main>
-            <h1>PRODUTOS</h1>
+            <h1>LISTA DE PRODUTOS</h1>
+
+            <div>
+                <button onClick={() => setExemplo(exemplo + 1)}>Click - {exemplo}</button>
+            </div>
+
             <div>
                 <table className={classes.tableStyle}>
                     <thead>
