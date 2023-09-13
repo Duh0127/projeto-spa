@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { ListaProdutos } from "./ListaProdutos";
+import classes from "./Produtos.module.css";
 
 export default function Produtos() {
 
@@ -9,24 +10,24 @@ export default function Produtos() {
         <main>
             <h1>PRODUTOS</h1>
             <div>
-                <table>
+                <table className={classes.tableStyle}>
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Descrição</th>
-                            <th>Preço</th>
-                            <th>Editar/Excluir</th>
+                        <tr className={classes.tableHeaderStyle}>
+                            <th className={classes.tableHeaderStyle}>ID</th>
+                            <th className={classes.tableHeaderStyle}>Nome</th>
+                            <th className={classes.tableHeaderStyle}>Descrição</th>
+                            <th className={classes.tableHeaderStyle}>Preço</th>
+                            <th className={classes.tableHeaderStyle}>Editar/Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
                         {ListaProdutos.map((produto, index) => (
-                            <tr key={index}>
-                                <td>{produto.id}</td>
-                                <td>{produto.nome}</td>
-                                <td>{produto.desc}</td>
-                                <td>{produto.preco}</td>
-                                <td>
+                            <tr key={index} className={classes.tableLineStyle}>
+                                <td className={classes.tableDataStyle}>{produto.id}</td>
+                                <td className={classes.tableDataStyle}>{produto.nome}</td>
+                                <td className={classes.tableDataStyle}>{produto.desc}</td>
+                                <td className={classes.tableDataStyle}>{produto.preco}</td>
+                                <td className={classes.tableDataButtonStyle}>
                                     <Link to={`/produtos/editar/${produto.id}`}>
                                         <FaEdit size={24} color="green" />
                                     </Link>
@@ -40,7 +41,10 @@ export default function Produtos() {
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colSpan='4'><strong>Total de produtos:</strong> {ListaProdutos.length}</td>
+                            <td colSpan='5' className={classes.tableDataStyle}>
+                                <strong>Total de produtos:</strong> 
+                                {ListaProdutos.length}
+                            </td>
                         </tr>
                     </tfoot>
                 </table>
