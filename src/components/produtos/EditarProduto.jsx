@@ -13,6 +13,7 @@ export default function EditarProdutos(){
         nome: produtoSelecionado.nome,
         desc: produtoSelecionado.desc,
         preco: produtoSelecionado.preco,
+        img: produtoSelecionado.img
     });
 
     const handleChange = (e) => {
@@ -42,6 +43,9 @@ export default function EditarProdutos(){
             <form onSubmit={handleSubmit}>
                 <fieldset>
                     <legend>Produto Selecionado</legend>
+                    <div>
+                        <img src={produto.img} alt={produto.desc} />
+                    </div>
                     <div>
                         <label htmlFor="idNome">Nome:</label>
                         <input 

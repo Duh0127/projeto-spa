@@ -6,11 +6,22 @@ import classes from "./Produtos.module.css";
 
 export default function Produtos() {
 
+    const [exemplo, setExemplo] = useState(0);
+    const [counter, setCounter] = useState(0);
+
     useEffect(() => {
         console.log("Use effect que será sempre renderizado")
     })
 
-    const [exemplo, setExemplo] = useState(0);
+    useEffect(() => {
+        console.log("Use effect que será renderizado apenas uma vez")
+    }, [])
+
+    useEffect(() => {
+        console.log("Use effect que será renderizado apenas quando o counter for alterado")
+    }, [counter])
+
+   
 
     return (
         <main>
@@ -18,6 +29,7 @@ export default function Produtos() {
 
             <div>
                 <button onClick={() => setExemplo(exemplo + 1)}>Click - {exemplo}</button>
+                <button onClick={() => setCounter(counter + 1)}>Counter - {counter}</button>
             </div>
 
             <div>
@@ -28,6 +40,7 @@ export default function Produtos() {
                             <th className={classes.tableHeaderStyle}>Nome</th>
                             <th className={classes.tableHeaderStyle}>Descrição</th>
                             <th className={classes.tableHeaderStyle}>Preço</th>
+                            <th className={classes.tableHeaderStyle}>Imagem</th>
                             <th className={classes.tableHeaderStyle}>Editar/Excluir</th>
                         </tr>
                     </thead>
@@ -38,6 +51,7 @@ export default function Produtos() {
                                 <td className={classes.tableDataStyle}>{produto.nome}</td>
                                 <td className={classes.tableDataStyle}>{produto.desc}</td>
                                 <td className={classes.tableDataStyle}>{produto.preco}</td>
+                                <td className={classes.tableDataStyle}><img src={produto.img} alt={produto.desc} /></td>
                                 <td className={classes.tableDataButtonStyle}>
                                     <Link to={`/produtos/editar/${produto.id}`}>
                                         <FaEdit size={24} color="green" />
