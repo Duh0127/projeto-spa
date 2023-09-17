@@ -19,7 +19,6 @@ export default function Navbar() {
             <S.Navbar>
                     <S.NavbarLink href="/">Home</S.NavbarLink>
                     <S.NavbarLink href="/produtos">Produtos</S.NavbarLink>
-                    <S.NavbarLink href="/produtos/editar/1">Editar Produto 1</S.NavbarLink>
                 </S.Navbar>
         </S.Header>
     );
