@@ -42,9 +42,9 @@ export const NavbarLink = styled.a`
     align-items: center;
     color: #fff;
     text-decoration: none;
-    padding: 0 1rem;
     height: 100%;
     font-size: 1.2rem;
+    margin: 0 1rem;
     font-weight: bold;
     &:hover {
         color: #000;

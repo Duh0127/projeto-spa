@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styles';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 export default function Navbar() {
@@ -17,8 +17,8 @@ export default function Navbar() {
                 <S.LogoText>551763</S.LogoText>
             </S.LogoDiv>
             <S.Navbar>
-                    <S.NavbarLink href="/">Home</S.NavbarLink>
-                    <S.NavbarLink href="/produtos">Produtos</S.NavbarLink>
+                    <S.NavbarLink><Link style={({ height: "100%", display: "flex", alignItems:"center", color:"#7d7d7d", textDecoration: "none" })} to="/">Home</Link></S.NavbarLink>
+                    <S.NavbarLink><Link style={({ height: "100%", display: "flex", alignItems:"center", color:"#7d7d7d", textDecoration: "none" })} to="/produtos">Produtos</Link></S.NavbarLink>
                 </S.Navbar>
         </S.Header>
     );
