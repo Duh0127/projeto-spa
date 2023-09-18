@@ -22,7 +22,6 @@ export default function AdicionarProduto(){
             preco: preco.value,
             img: img ? img.value : "https://picsum.photos/100/100"
         }
-        console.log(novoProduto);
         ListaProdutos.push(novoProduto);
         navigate('/produtos')
     }
