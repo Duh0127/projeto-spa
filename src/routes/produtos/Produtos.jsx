@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { ListaProdutos } from "./ListaProdutos";
@@ -7,6 +7,22 @@ import { useNavigate } from "react-router-dom";
 
 export default function Produtos() {
     const navigate = useNavigate();
+
+    const [listaProdutoLocal, setListaProdutoLocal] = useState([{}]);
+
+    useEffect(()=>{
+        fetch(' http://localhost:5000/produtos',{
+            method:'GET',
+            headers:{'Content-Type':'application/json'},        
+        }).then((response) =>response.json())
+        .then((data)=>{
+            console.log(data);
+            setListaProdutoLocal(data);
+        })
+        .catch((err)=>console.log(err));
+
+
+    },{});
 
     return (
         <main className={classes.centralizar}>
@@ -25,7 +41,7 @@ export default function Produtos() {
                     </tr>
                 </thead>
                 <tbody>
-                    {ListaProdutos.map((produto, index) => (
+                    {listaProdutoLocal.map((produto, index) => (
                         <tr key={index} className={classes.tableLineStyle}>
                             <td className={classes.tableDataStyle}>{produto.id}</td>
                             <td className={classes.tableDataStyle}>{produto.nome}</td>
