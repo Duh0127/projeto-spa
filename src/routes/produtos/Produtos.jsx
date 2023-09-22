@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { ListaProdutos } from "./ListaProdutos";
@@ -63,7 +63,7 @@ export default function Produtos() {
                     <tr>
                         <td colSpan='5' className={classes.tableDataStyle}>
                             <strong>Total de produtos:</strong>
-                            {ListaProdutos.length}
+                            {listaProdutoLocal.length}
                         </td>
                     </tr>
                 </tfoot>
