@@ -1,4 +1,3 @@
-import { ListaProdutos } from "../ListaProdutos";
 import { useNavigate } from "react-router-dom";
 import classes from "./Adicionar.module.css";
 import { useEffect, useState } from "react";
@@ -24,7 +23,7 @@ export default function AdicionarProduto() {
             .catch((error) => console.log(error));
 
             setNovoId(listaLocalProdutos[listaLocalProdutos.length - 1].id + 1);
-    }, []);
+    }, [listaLocalProdutos]);
 
     const [produto, setProduto] = useState({
         id: novoId,
