@@ -29,7 +29,7 @@ export default function Produtos() {
             .catch((error) => console.log(error));
 
             setNovoId(listaLocalProdutos[listaLocalProdutos.length - 1].id + 1);
-    }, [listaLocalProdutos]);
+    }, []);
 
     const [produto, setProduto] = useState({
         id: novoId,
