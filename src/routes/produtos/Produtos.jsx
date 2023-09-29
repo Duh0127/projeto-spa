@@ -7,29 +7,10 @@ import Modal from "../../components/Modal";
 
 export default function Produtos() {
     const navigate = useNavigate();
-    const [listaLocalProdutos, setListaLocalProdutos] = useState([{}]);
     const [novoId, setNovoId] = useState(0);
 
     const [listaProdutoLocal, setListaProdutoLocal] = useState([{}]);
     const [openModal, setOpenModal] = useState(false);
-
-
-    useEffect(() => {
-        fetch("http://localhost:5000/produtos", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setListaLocalProdutos(data);
-                console.log(data);
-            })
-            .catch((error) => console.log(error));
-
-            setNovoId(listaLocalProdutos[listaLocalProdutos.length - 1].id + 1);
-    }, []);
 
     const [produto, setProduto] = useState({
         id: novoId,
@@ -38,6 +19,20 @@ export default function Produtos() {
         preco: "",
         img: "",
     });
+
+
+    const fetchData = () => {
+        fetch(' http://localhost:5000/produtos', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        }).then((response) => response.json())
+            .then((data) => {
+                setListaProdutoLocal(data);
+                setNovoId(listaProdutoLocal[listaProdutoLocal.length - 1].id + 1);
+            })
+            .catch((err) => console.log(err));
+    }
+    
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -55,27 +50,20 @@ export default function Produtos() {
             }
         })
         .then((response)=> response.json())
-        .then((data)=>(console.log(data)))
         .catch(error => console.log(error));
-    
-        navigate("/produtos");
+
+        setOpenModal(false);
+        window.location.reload();
       }
 
     useEffect(() => {
-        fetch(' http://localhost:5000/produtos', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        }).then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setListaProdutoLocal(data);
-            })
-            .catch((err) => console.log(err));
-    }, {});
+        fetchData();
+    }, []);
 
     return (
         <main className={classes.centralizar}>
             <h1 className={classes.titulo}>LISTA DE PRODUTOS</h1>
+            
             <Modal open={openModal} setOpen={setOpenModal}>
                 <main className={classes.centralizar}>
                     <form className={classes.form} onSubmit={handleSubmit}>
@@ -131,8 +119,8 @@ export default function Produtos() {
                     </form>
                 </main>
             </Modal>
+
             {!openModal && <button className={classes.adicionar} onClick={() => setOpenModal(!openModal)}>Inserir Produto</button>}
-            {/* <button className={classes.adicionar} onClick={() => navigate('/produtos/adicionar')}>Adicionar Produto</button> */}
 
             <table className={classes.tableStyle}>
                 <thead>

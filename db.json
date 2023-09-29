@@ -2,7 +2,7 @@
   "produtos": [
     {
       "id": 1,
-      "nome": "Teclado",
+      "nome": "Teclado Alterado",
       "desc": "Teclado 102 Teclas - Mecânico",
       "preco": 200,
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQwlEZy14pIhJ_LVw1fBFINg56CpnSMyxvan-ohGCR4GYY4UG_OYjIWA1YSnCylOLFR5Q&usqp=CAU"
@@ -52,37 +52,9 @@
     {
       "id": 8,
       "nome": "Placa de Vídeo",
-      "desc": "Placa de Vídeo - 8GB",
+      "desc": "8GB DDR5X",
       "preco": 2000,
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTln3RwiwkdVLzDIIK8nhUVtl85qkz3jDt7th8f_D5o0iv7fuC_yO4GTmaH4Y01HSwKZh0&usqp=CAU"
-    },
-    {
-      "id": 9,
-      "nome": "33333333",
-      "desc": "sdasd",
-      "preco": "23",
-      "img": "asd"
-    },
-    {
-      "id": 10,
-      "nome": "nome",
-      "desc": "descrição",
-      "preco": "27",
-      "img": "https://github.com/duh0127.png"
-    },
-    {
-      "id": 11,
-      "nome": "Carlão bonito",
-      "desc": "slk, casaria facil",
-      "preco": "288",
-      "img": "http://github.com/carloseduardo7700.png"
-    },
-    {
-      "id": 12,
-      "nome": "nome",
-      "desc": "deas",
-      "preco": "921834",
-      "img": "jssjssd"
     }
   ]
 }
