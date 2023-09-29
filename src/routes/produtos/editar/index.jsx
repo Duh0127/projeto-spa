@@ -39,10 +39,7 @@ export default function EditarProduto() {
             body: JSON.stringify(produto)
         })
             .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                navigate('/produtos');
-            })
+            .then(() => navigate('/produtos'))
             .catch((err) => console.log(err));
     }
 

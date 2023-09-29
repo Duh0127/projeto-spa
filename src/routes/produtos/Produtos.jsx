@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import classes from "./Produtos.module.css";
+// import classes from "./Produtos.module.css";
+import './Produtos.scss';
 import { useNavigate } from "react-router-dom";
 import Modal from "../../components/Modal";
 
@@ -32,47 +33,50 @@ export default function Produtos() {
             })
             .catch((err) => console.log(err));
     }
-    
+
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setProduto({ ...produto, [name]: value });
     };
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-    
-        fetch("http://localhost:5000/produtos",{
+
+        if(produto.nome === "" || produto.desc === "" || produto.preco === "" || produto.img === "") {
+            alert("Preencha todos os campos!");
+            return;
+        }
+
+        fetch("http://localhost:5000/produtos", {
             method: "POST",
             body: JSON.stringify(produto),
-            headers:{
-                "Content-Type":"application/json",
+            headers: {
+                "Content-Type": "application/json",
             }
         })
-        .then((response)=> response.json())
-        .catch(error => console.log(error));
+            .then((response) => response.json())
+            .catch(error => console.log(error));
 
         setOpenModal(false);
         window.location.reload();
-      }
+    }
 
     useEffect(() => {
         fetchData();
     }, []);
 
     return (
-        <main className={classes.centralizar}>
-            <h1 className={classes.titulo}>LISTA DE PRODUTOS</h1>
-            
-            <Modal open={openModal} setOpen={setOpenModal}>
-                <main className={classes.centralizar}>
-                    <form className={classes.form} onSubmit={handleSubmit}>
-                        <fieldset className={classes.fieldset}>
-                            <legend className={classes.legend}>Novo Produto</legend>
-                            <div className={classes.divInputs}>
-                                <label className={classes.label} htmlFor="idNome">Nome:</label>
+        <main className="main">
+            <h1 className="">LISTA DE PRODUTOS</h1>
+
+            <Modal title="NOVO PRODUTO" open={openModal} setOpen={setOpenModal}>
+                <main className="modal">
+                    <form onSubmit={handleSubmit}>
+                        <fieldset>
+                            <div>
+                                <label htmlFor="idNome">Nome:</label>
                                 <input
-                                    className={classes.input}
                                     type="text"
                                     name='nome'
                                     onChange={handleChange}
@@ -80,10 +84,9 @@ export default function Produtos() {
                                     id='idNome'
                                 />
                             </div>
-                            <div className={classes.divInputs}>
-                                <label className={classes.label} htmlFor="idDesc">Descrição:</label>
+                            <div>
+                                <label htmlFor="idDesc">Descrição:</label>
                                 <input
-                                    className={classes.input}
                                     type="text"
                                     name='desc'
                                     onChange={handleChange}
@@ -91,10 +94,9 @@ export default function Produtos() {
                                     id='idDesc'
                                 />
                             </div>
-                            <div className={classes.divInputs}>
-                                <label className={classes.label} htmlFor="idPreco">Preço:</label>
+                            <div>
+                                <label htmlFor="idPreco">Preço:</label>
                                 <input
-                                    className={classes.input}
                                     type="number"
                                     min="0"
                                     name='preco'
@@ -103,10 +105,9 @@ export default function Produtos() {
                                     id='idPreco'
                                 />
                             </div>
-                            <div className={classes.divInputs}>
-                                <label className={classes.label} htmlFor="idImg">Imagem:</label>
+                            <div>
+                                <label htmlFor="idImg">Imagem:</label>
                                 <input
-                                    className={classes.input}
                                     type="text"
                                     name='img'
                                     onChange={handleChange}
@@ -114,47 +115,49 @@ export default function Produtos() {
                                     id='idImg'
                                 />
                             </div>
-                            <button className={classes.button} type="submit">Adicionar</button>
+                            <button type="submit">Adicionar</button>
                         </fieldset>
                     </form>
                 </main>
             </Modal>
 
-            {!openModal && <button className={classes.adicionar} onClick={() => setOpenModal(!openModal)}>Inserir Produto</button>}
+            {!openModal && <button onClick={() => setOpenModal(!openModal)}>Inserir Produto</button>}
 
-            <table className={classes.tableStyle}>
+            <table className="tableStyle">
                 <thead>
-                    <tr className={classes.tableHeaderStyle}>
-                        <th className={classes.tableHeaderStyle}>ID</th>
-                        <th className={classes.tableHeaderStyle}>Nome</th>
-                        <th className={classes.tableHeaderStyle}>Descrição</th>
-                        <th className={classes.tableHeaderStyle}>Preço</th>
-                        <th className={classes.tableHeaderStyle}>Imagem</th>
-                        <th className={classes.tableHeaderStyle}>Editar/Excluir</th>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                        <th>Imagem</th>
+                        <th>Editar/Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     {listaProdutoLocal.map((produto, index) => (
-                        <tr key={index} className={classes.tableLineStyle}>
-                            <td className={classes.tableDataStyle}>{produto.id}</td>
-                            <td className={classes.tableDataStyle}>{produto.nome}</td>
-                            <td className={classes.tableDataStyle}>{produto.desc}</td>
-                            <td className={classes.tableDataStyle}>{produto.preco}</td>
-                            <td className={classes.tableDataStyle}><img className={classes.tableDataImgStyle} src={produto.img} alt={produto.desc} /></td>
-                            <td className={classes.tableDataButtonStyle}>
-                                <Link to={`/produtos/editar/${produto.id}`}>
-                                    <FaEdit size={24} color="green" />
-                                </Link>
-                                <Link to={`/produtos/excluir/${produto.id}`}>
-                                    <FaTrash size={24} color="red" />
-                                </Link>
+                        <tr key={index}>
+                            <td>{produto.id}</td>
+                            <td>{produto.nome}</td>
+                            <td>{produto.desc}</td>
+                            <td>{produto.preco}</td>
+                            <td><img src={produto.img} alt={produto.desc} /></td>
+                            <td>
+                                <div>
+                                    <Link to={`/produtos/editar/${produto.id}`}>
+                                        <FaEdit size={24} color="green" />
+                                    </Link>
+                                    <Link to={`/produtos/excluir/${produto.id}`}>
+                                        <FaTrash size={24} color="red" />
+                                    </Link>
+                                </div>
                             </td>
                         </tr>
                     ))}
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colSpan='5' className={classes.tableDataStyle}>
+                        <td colSpan='5' className="">
                             <strong>Total de produtos:</strong>
                             {listaProdutoLocal.length}
                         </td>
