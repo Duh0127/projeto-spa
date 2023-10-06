@@ -29,6 +29,10 @@
 > - CSS Module -> modulos de css que precisam ser criados em ordem de uso, seguindo o HTML
 ------------------------------------------------------------------------------------------
 
+> # SCSS
+> - SCSS -> modulos de css que precisam ser criados em ordem de uso, seguindo o HTML, seguindo a hierarquia do html
+------------------------------------------------------------------------------------------
+
 > # Anotações
 > - Todo arquivo JSX são componentes.
 > - StrictMode é um comando que obriga usar tudo que vc declarar de variavel ou objeto. Com isso, ele renderiza 2 vezes, para garantir essa verificação de desempenho do projeto.
